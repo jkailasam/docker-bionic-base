@@ -17,7 +17,7 @@ ENV HOME="/root" \
 # install apt-utils and locales
 RUN \
 	apt-get update && \
-	apt-get install -y -no-install-recommends \
+	apt-get install --no-install-recommends -y  \
 	apt-utils \
 	locales \
 	curl \
@@ -27,7 +27,7 @@ RUN \
 	locale-gen en_US.UTF-8 && \
 
 	# add s6 overlay
-	curl -o \
+	curl -k -o \
 	/tmp/s6-overlay.tar.gz -L \
 	"https://github.com/just-containers/s6-overlay/releases/download/${OVERLAY_VERSION}/s6-overlay-${OVERLAY_ARCH}.tar.gz" && \
 	tar xfz \
